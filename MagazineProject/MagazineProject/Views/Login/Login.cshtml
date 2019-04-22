@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_NavBar.cshtml";
+}
+<div class="container">
+    <h3 style="color:orange;font-weight:bolder">Login</h3>
+    <div class="form-group ">
+
+        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, null, new { @class = "alert alert-danger" })
+
+            @Html.Label("User ID")<br />
+            <input type="text" name="username" id="username" class="form-control"><br />
+
+            @Html.Label("Password")<br />
+            <input type="password" name="password" id="password" class="form-control"><br />
+
+            <div class="row">
+                <div class="col">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-danger">Login</button>@Html.ActionLink("Register", "Create", new { Controller = "Admin", action = "Create" }, new { @class = "btn btn-danger" })
+                    </div>
+                </div>
+                
+                </div>
+            
+
+
+        }
+
+    </div>
+</div>

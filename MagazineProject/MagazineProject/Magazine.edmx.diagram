@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b240f51c10fd4052af600c0d8ad26415" Name="Diagram1">
+        <EntityTypeShape EntityType="MagazineModel.Academy_info" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagazineModel.Admin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagazineModel.Article" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagazineModel.Faculty" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagazineModel.File_post" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagazineModel.Magazine_period" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagazineModel.Marketing_coordinator" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagazineModel.Marketing_Manager" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagazineModel.Review" Width="1.5" PointX="7.5" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagazineModel.Student" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagazineModel.CoordinatorHomePage" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagazineModel.ManagerPage" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MagazineModel.StudentPostFile" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="MagazineModel.Maga_Aca" ManuallyRouted="false" />
+        <AssociationConnector Association="MagazineModel.A_Maga" ManuallyRouted="false" />
+        <AssociationConnector Association="MagazineModel.A_S" ManuallyRouted="false" />
+        <AssociationConnector Association="MagazineModel.F_A" ManuallyRouted="false" />
+        <AssociationConnector Association="MagazineModel.R_A" ManuallyRouted="false" />
+        <AssociationConnector Association="MagazineModel.Mar_F" ManuallyRouted="false" />
+        <AssociationConnector Association="MagazineModel.S_F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

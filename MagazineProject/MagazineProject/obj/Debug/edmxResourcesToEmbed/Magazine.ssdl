@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MagazineModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Academy_info">
+    <Key>
+      <PropertyRef Name="academic_id" />
+    </Key>
+    <Property Name="academic_id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="academic_year_from" Type="datetime" />
+    <Property Name="academic_year_to" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="admin_password" Type="varchar" MaxLength="50" />
+    <Property Name="admin_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="admin_email" Type="nvarchar" MaxLength="50" />
+    <Property Name="admin_phone" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="article_id" />
+    </Key>
+    <Property Name="article_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="student_id" Type="varchar" MaxLength="50" />
+    <Property Name="period_id" Type="int" />
+    <Property Name="article_tittle" Type="varchar" MaxLength="100" />
+    <Property Name="arrticle_content" Type="nvarchar(max)" />
+    <Property Name="article_post_date" Type="datetime" />
+    <Property Name="article_public_date" Type="datetime" />
+    <Property Name="article_avatar_img" Type="varchar" MaxLength="100" />
+    <Property Name="article_status" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Faculty">
+    <Key>
+      <PropertyRef Name="faculty_id" />
+    </Key>
+    <Property Name="faculty_id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="faculty_name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="File_post">
+    <Key>
+      <PropertyRef Name="file_id" />
+    </Key>
+    <Property Name="file_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="article_id" Type="int" />
+    <Property Name="file_url" Type="varchar" MaxLength="500" />
+    <Property Name="time_post" Type="datetime" />
+    <Property Name="file_status" Type="varchar" MaxLength="20" />
+    <Property Name="time_public" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Magazine_period">
+    <Key>
+      <PropertyRef Name="period_id" />
+    </Key>
+    <Property Name="period_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="academic_id" Type="varchar" MaxLength="50" />
+    <Property Name="period_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="closure_post_date" Type="datetime" />
+    <Property Name="manager_set_name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Marketing_coordinator">
+    <Key>
+      <PropertyRef Name="coordinator_id" />
+    </Key>
+    <Property Name="coordinator_id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="faculty_id" Type="varchar" MaxLength="50" />
+    <Property Name="coor_password" Type="varchar" MaxLength="50" />
+    <Property Name="coor_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="coor_email" Type="varchar" MaxLength="50" />
+    <Property Name="coor_phone" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Marketing_Manager">
+    <Key>
+      <PropertyRef Name="manager_id" />
+    </Key>
+    <Property Name="manager_id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="manager_password" Type="varchar" MaxLength="50" />
+    <Property Name="manager_name" Type="varchar" MaxLength="50" />
+    <Property Name="manager_email" Type="varchar" MaxLength="50" />
+    <Property Name="manager_phone" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="review_id" />
+    </Key>
+    <Property Name="review_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="article_id" Type="int" />
+    <Property Name="display_code" Type="int" />
+    <Property Name="review_content" Type="nvarchar(max)" />
+    <Property Name="review_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="review_date" Type="datetime" />
+    <Property Name="rating" Type="float" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="student_id" />
+    </Key>
+    <Property Name="student_id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="faculty_id" Type="varchar" MaxLength="50" />
+    <Property Name="student_password" Type="varchar" MaxLength="50" />
+    <Property Name="student_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="student_email" Type="nvarchar" MaxLength="50" />
+    <Property Name="student_phone" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Magazine.dbo.CoordinatorHomePage' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CoordinatorHomePage">
+    <Key>
+      <PropertyRef Name="coordinator_id" />
+      <PropertyRef Name="student_id" />
+      <PropertyRef Name="file_id" />
+      <PropertyRef Name="Expr2" />
+      <PropertyRef Name="Expr3" />
+    </Key>
+    <Property Name="coordinator_id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="faculty_id" Type="varchar" MaxLength="50" />
+    <Property Name="coor_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="coor_email" Type="varchar" MaxLength="50" />
+    <Property Name="student_id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="student_password" Type="varchar" MaxLength="50" />
+    <Property Name="Expr1" Type="varchar" MaxLength="50" />
+    <Property Name="student_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="student_email" Type="nvarchar" MaxLength="50" />
+    <Property Name="student_phone" Type="varchar" MaxLength="20" />
+    <Property Name="file_id" Type="int" Nullable="false" />
+    <Property Name="article_id" Type="int" />
+    <Property Name="file_url" Type="varchar" MaxLength="500" />
+    <Property Name="time_post" Type="datetime" />
+    <Property Name="file_status" Type="varchar" MaxLength="20" />
+    <Property Name="time_public" Type="datetime" />
+    <Property Name="Expr2" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="faculty_name" Type="varchar" MaxLength="50" />
+    <Property Name="Expr3" Type="int" Nullable="false" />
+    <Property Name="Expr4" Type="varchar" MaxLength="50" />
+    <Property Name="period_id" Type="int" />
+    <Property Name="article_tittle" Type="varchar" MaxLength="100" />
+    <Property Name="arrticle_content" Type="nvarchar(max)" />
+    <Property Name="article_public_date" Type="datetime" />
+    <Property Name="article_post_date" Type="datetime" />
+    <Property Name="article_avatar_img" Type="varchar" MaxLength="100" />
+    <Property Name="article_status" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Magazine.dbo.ManagerPage' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ManagerPage">
+    <Key>
+      <PropertyRef Name="file_id" />
+      <PropertyRef Name="faculty_id" />
+      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="coordinator_id" />
+      <PropertyRef Name="Expr3" />
+    </Key>
+    <Property Name="file_id" Type="int" Nullable="false" />
+    <Property Name="article_id" Type="int" />
+    <Property Name="file_url" Type="varchar" MaxLength="500" />
+    <Property Name="time_post" Type="datetime" />
+    <Property Name="time_public" Type="datetime" />
+    <Property Name="file_status" Type="varchar" MaxLength="20" />
+    <Property Name="faculty_id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="faculty_name" Type="varchar" MaxLength="50" />
+    <Property Name="Expr1" Type="int" Nullable="false" />
+    <Property Name="student_id" Type="varchar" MaxLength="50" />
+    <Property Name="period_id" Type="int" />
+    <Property Name="article_tittle" Type="varchar" MaxLength="100" />
+    <Property Name="arrticle_content" Type="nvarchar(max)" />
+    <Property Name="article_post_date" Type="datetime" />
+    <Property Name="article_public_date" Type="datetime" />
+    <Property Name="article_avatar_img" Type="varchar" MaxLength="100" />
+    <Property Name="article_status" Type="varchar" MaxLength="20" />
+    <Property Name="coordinator_id" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Expr2" Type="varchar" MaxLength="50" />
+    <Property Name="coor_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="coor_email" Type="varchar" MaxLength="50" />
+    <Property Name="Expr3" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Expr4" Type="varchar" MaxLength="50" />
+    <Property Name="student_password" Type="varchar" MaxLength="50" />
+    <Property Name="student_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="student_email" Type="nvarchar" MaxLength="50" />
+    <Property Name="student_phone" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Magazine.dbo.StudentPostFile' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="StudentPostFile">
+    <Key>
+      <PropertyRef Name="file_id" />
+      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="Expr2" />
+      <PropertyRef Name="Expr3" />
+      <PropertyRef Name="review_id" />
+    </Key>
+    <Property Name="file_id" Type="int" Nullable="false" />
+    <Property Name="article_id" Type="int" />
+    <Property Name="file_url" Type="varchar" MaxLength="500" />
+    <Property Name="time_post" Type="datetime" />
+    <Property Name="file_status" Type="varchar" MaxLength="20" />
+    <Property Name="time_public" Type="datetime" />
+    <Property Name="student_id" Type="varchar" MaxLength="50" />
+    <Property Name="period_id" Type="int" />
+    <Property Name="article_tittle" Type="varchar" MaxLength="100" />
+    <Property Name="arrticle_content" Type="nvarchar(max)" />
+    <Property Name="faculty_name" Type="varchar" MaxLength="50" />
+    <Property Name="article_avatar_img" Type="varchar" MaxLength="100" />
+    <Property Name="article_status" Type="varchar" MaxLength="20" />
+    <Property Name="article_post_date" Type="datetime" />
+    <Property Name="article_public_date" Type="datetime" />
+    <Property Name="student_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="student_email" Type="nvarchar" MaxLength="50" />
+    <Property Name="closure_post_date" Type="datetime" />
+    <Property Name="period_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="display_code" Type="int" />
+    <Property Name="review_content" Type="nvarchar(max)" />
+    <Property Name="review_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="review_date" Type="datetime" />
+    <Property Name="rating" Type="float" />
+    <Property Name="Expr1" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Expr2" Type="int" Nullable="false" />
+    <Property Name="Expr3" Type="int" Nullable="false" />
+    <Property Name="review_id" Type="int" Nullable="false" />
+    <Property Name="academic_id" Type="varchar" MaxLength="50" />
+    <Property Name="Expr4" Type="int" />
+  </EntityType>
+  <Association Name="A_Maga">
+    <End Role="Magazine_period" Type="Self.Magazine_period" Multiplicity="0..1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazine_period">
+        <PropertyRef Name="period_id" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="period_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="A_S">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="student_id" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="F_A">
+    <End Role="Article" Type="Self.Article" Multiplicity="0..1" />
+    <End Role="File_post" Type="Self.File_post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="article_id" />
+      </Principal>
+      <Dependent Role="File_post">
+        <PropertyRef Name="article_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Maga_Aca">
+    <End Role="Academy_info" Type="Self.Academy_info" Multiplicity="0..1" />
+    <End Role="Magazine_period" Type="Self.Magazine_period" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Academy_info">
+        <PropertyRef Name="academic_id" />
+      </Principal>
+      <Dependent Role="Magazine_period">
+        <PropertyRef Name="academic_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Mar_F">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+    <End Role="Marketing_coordinator" Type="Self.Marketing_coordinator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="faculty_id" />
+      </Principal>
+      <Dependent Role="Marketing_coordinator">
+        <PropertyRef Name="faculty_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_A">
+    <End Role="Article" Type="Self.Article" Multiplicity="0..1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="article_id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="article_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="S_F">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="faculty_id" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="faculty_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MagazineModelStoreContainer">
+    <EntitySet Name="Academy_info" EntityType="Self.Academy_info" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Faculty" EntityType="Self.Faculty" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="File_post" EntityType="Self.File_post" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Magazine_period" EntityType="Self.Magazine_period" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Marketing_coordinator" EntityType="Self.Marketing_coordinator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Marketing_Manager" EntityType="Self.Marketing_Manager" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CoordinatorHomePage" EntityType="Self.CoordinatorHomePage" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CoordinatorHomePage].[coordinator_id] AS [coordinator_id], 
+    [CoordinatorHomePage].[faculty_id] AS [faculty_id], 
+    [CoordinatorHomePage].[coor_name] AS [coor_name], 
+    [CoordinatorHomePage].[coor_email] AS [coor_email], 
+    [CoordinatorHomePage].[student_id] AS [student_id], 
+    [CoordinatorHomePage].[student_password] AS [student_password], 
+    [CoordinatorHomePage].[Expr1] AS [Expr1], 
+    [CoordinatorHomePage].[student_name] AS [student_name], 
+    [CoordinatorHomePage].[student_email] AS [student_email], 
+    [CoordinatorHomePage].[student_phone] AS [student_phone], 
+    [CoordinatorHomePage].[file_id] AS [file_id], 
+    [CoordinatorHomePage].[article_id] AS [article_id], 
+    [CoordinatorHomePage].[file_url] AS [file_url], 
+    [CoordinatorHomePage].[time_post] AS [time_post], 
+    [CoordinatorHomePage].[file_status] AS [file_status], 
+    [CoordinatorHomePage].[time_public] AS [time_public], 
+    [CoordinatorHomePage].[Expr2] AS [Expr2], 
+    [CoordinatorHomePage].[faculty_name] AS [faculty_name], 
+    [CoordinatorHomePage].[Expr3] AS [Expr3], 
+    [CoordinatorHomePage].[Expr4] AS [Expr4], 
+    [CoordinatorHomePage].[period_id] AS [period_id], 
+    [CoordinatorHomePage].[article_tittle] AS [article_tittle], 
+    [CoordinatorHomePage].[arrticle_content] AS [arrticle_content], 
+    [CoordinatorHomePage].[article_public_date] AS [article_public_date], 
+    [CoordinatorHomePage].[article_post_date] AS [article_post_date], 
+    [CoordinatorHomePage].[article_avatar_img] AS [article_avatar_img], 
+    [CoordinatorHomePage].[article_status] AS [article_status]
+    FROM [dbo].[CoordinatorHomePage] AS [CoordinatorHomePage]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ManagerPage" EntityType="Self.ManagerPage" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ManagerPage].[file_id] AS [file_id], 
+    [ManagerPage].[article_id] AS [article_id], 
+    [ManagerPage].[file_url] AS [file_url], 
+    [ManagerPage].[time_post] AS [time_post], 
+    [ManagerPage].[time_public] AS [time_public], 
+    [ManagerPage].[file_status] AS [file_status], 
+    [ManagerPage].[faculty_id] AS [faculty_id], 
+    [ManagerPage].[faculty_name] AS [faculty_name], 
+    [ManagerPage].[Expr1] AS [Expr1], 
+    [ManagerPage].[student_id] AS [student_id], 
+    [ManagerPage].[period_id] AS [period_id], 
+    [ManagerPage].[article_tittle] AS [article_tittle], 
+    [ManagerPage].[arrticle_content] AS [arrticle_content], 
+    [ManagerPage].[article_post_date] AS [article_post_date], 
+    [ManagerPage].[article_public_date] AS [article_public_date], 
+    [ManagerPage].[article_avatar_img] AS [article_avatar_img], 
+    [ManagerPage].[article_status] AS [article_status], 
+    [ManagerPage].[coordinator_id] AS [coordinator_id], 
+    [ManagerPage].[Expr2] AS [Expr2], 
+    [ManagerPage].[coor_name] AS [coor_name], 
+    [ManagerPage].[coor_email] AS [coor_email], 
+    [ManagerPage].[Expr3] AS [Expr3], 
+    [ManagerPage].[Expr4] AS [Expr4], 
+    [ManagerPage].[student_password] AS [student_password], 
+    [ManagerPage].[student_name] AS [student_name], 
+    [ManagerPage].[student_email] AS [student_email], 
+    [ManagerPage].[student_phone] AS [student_phone]
+    FROM [dbo].[ManagerPage] AS [ManagerPage]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="StudentPostFile" EntityType="Self.StudentPostFile" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [StudentPostFile].[file_id] AS [file_id], 
+    [StudentPostFile].[article_id] AS [article_id], 
+    [StudentPostFile].[file_url] AS [file_url], 
+    [StudentPostFile].[time_post] AS [time_post], 
+    [StudentPostFile].[file_status] AS [file_status], 
+    [StudentPostFile].[time_public] AS [time_public], 
+    [StudentPostFile].[student_id] AS [student_id], 
+    [StudentPostFile].[period_id] AS [period_id], 
+    [StudentPostFile].[article_tittle] AS [article_tittle], 
+    [StudentPostFile].[arrticle_content] AS [arrticle_content], 
+    [StudentPostFile].[faculty_name] AS [faculty_name], 
+    [StudentPostFile].[article_avatar_img] AS [article_avatar_img], 
+    [StudentPostFile].[article_status] AS [article_status], 
+    [StudentPostFile].[article_post_date] AS [article_post_date], 
+    [StudentPostFile].[article_public_date] AS [article_public_date], 
+    [StudentPostFile].[student_name] AS [student_name], 
+    [StudentPostFile].[student_email] AS [student_email], 
+    [StudentPostFile].[closure_post_date] AS [closure_post_date], 
+    [StudentPostFile].[period_name] AS [period_name], 
+    [StudentPostFile].[display_code] AS [display_code], 
+    [StudentPostFile].[review_content] AS [review_content], 
+    [StudentPostFile].[review_name] AS [review_name], 
+    [StudentPostFile].[review_date] AS [review_date], 
+    [StudentPostFile].[rating] AS [rating], 
+    [StudentPostFile].[Expr1] AS [Expr1], 
+    [StudentPostFile].[Expr2] AS [Expr2], 
+    [StudentPostFile].[Expr3] AS [Expr3], 
+    [StudentPostFile].[review_id] AS [review_id], 
+    [StudentPostFile].[academic_id] AS [academic_id], 
+    [StudentPostFile].[Expr4] AS [Expr4]
+    FROM [dbo].[StudentPostFile] AS [StudentPostFile]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="A_Maga" Association="Self.A_Maga">
+      <End Role="Magazine_period" EntitySet="Magazine_period" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
+    <AssociationSet Name="A_S" Association="Self.A_S">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Article" EntitySet="Article" />
+    </AssociationSet>
+    <AssociationSet Name="F_A" Association="Self.F_A">
+      <End Role="Article" EntitySet="Article" />
+      <End Role="File_post" EntitySet="File_post" />
+    </AssociationSet>
+    <AssociationSet Name="Maga_Aca" Association="Self.Maga_Aca">
+      <End Role="Academy_info" EntitySet="Academy_info" />
+      <End Role="Magazine_period" EntitySet="Magazine_period" />
+    </AssociationSet>
+    <AssociationSet Name="Mar_F" Association="Self.Mar_F">
+      <End Role="Faculty" EntitySet="Faculty" />
+      <End Role="Marketing_coordinator" EntitySet="Marketing_coordinator" />
+    </AssociationSet>
+    <AssociationSet Name="R_A" Association="Self.R_A">
+      <End Role="Article" EntitySet="Article" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
+    <AssociationSet Name="S_F" Association="Self.S_F">
+      <End Role="Faculty" EntitySet="Faculty" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

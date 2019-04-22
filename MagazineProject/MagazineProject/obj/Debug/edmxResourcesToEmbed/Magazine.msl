@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MagazineModelStoreContainer" CdmEntityContainer="MagazineEntities">
+    <EntitySetMapping Name="Academy_info">
+      <EntityTypeMapping TypeName="MagazineModel.Academy_info">
+        <MappingFragment StoreEntitySet="Academy_info">
+          <ScalarProperty Name="academic_id" ColumnName="academic_id" />
+          <ScalarProperty Name="academic_year_from" ColumnName="academic_year_from" />
+          <ScalarProperty Name="academic_year_to" ColumnName="academic_year_to" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="MagazineModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+          <ScalarProperty Name="admin_password" ColumnName="admin_password" />
+          <ScalarProperty Name="admin_name" ColumnName="admin_name" />
+          <ScalarProperty Name="admin_email" ColumnName="admin_email" />
+          <ScalarProperty Name="admin_phone" ColumnName="admin_phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Articles">
+      <EntityTypeMapping TypeName="MagazineModel.Article">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="article_id" ColumnName="article_id" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="period_id" ColumnName="period_id" />
+          <ScalarProperty Name="article_tittle" ColumnName="article_tittle" />
+          <ScalarProperty Name="arrticle_content" ColumnName="arrticle_content" />
+          <ScalarProperty Name="article_post_date" ColumnName="article_post_date" />
+          <ScalarProperty Name="article_public_date" ColumnName="article_public_date" />
+          <ScalarProperty Name="article_avatar_img" ColumnName="article_avatar_img" />
+          <ScalarProperty Name="article_status" ColumnName="article_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Faculties">
+      <EntityTypeMapping TypeName="MagazineModel.Faculty">
+        <MappingFragment StoreEntitySet="Faculty">
+          <ScalarProperty Name="faculty_id" ColumnName="faculty_id" />
+          <ScalarProperty Name="faculty_name" ColumnName="faculty_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="File_post">
+      <EntityTypeMapping TypeName="MagazineModel.File_post">
+        <MappingFragment StoreEntitySet="File_post">
+          <ScalarProperty Name="file_id" ColumnName="file_id" />
+          <ScalarProperty Name="article_id" ColumnName="article_id" />
+          <ScalarProperty Name="file_url" ColumnName="file_url" />
+          <ScalarProperty Name="time_post" ColumnName="time_post" />
+          <ScalarProperty Name="file_status" ColumnName="file_status" />
+          <ScalarProperty Name="time_public" ColumnName="time_public" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Magazine_period">
+      <EntityTypeMapping TypeName="MagazineModel.Magazine_period">
+        <MappingFragment StoreEntitySet="Magazine_period">
+          <ScalarProperty Name="period_id" ColumnName="period_id" />
+          <ScalarProperty Name="academic_id" ColumnName="academic_id" />
+          <ScalarProperty Name="period_name" ColumnName="period_name" />
+          <ScalarProperty Name="closure_post_date" ColumnName="closure_post_date" />
+          <ScalarProperty Name="manager_set_name" ColumnName="manager_set_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Marketing_coordinator">
+      <EntityTypeMapping TypeName="MagazineModel.Marketing_coordinator">
+        <MappingFragment StoreEntitySet="Marketing_coordinator">
+          <ScalarProperty Name="coordinator_id" ColumnName="coordinator_id" />
+          <ScalarProperty Name="faculty_id" ColumnName="faculty_id" />
+          <ScalarProperty Name="coor_password" ColumnName="coor_password" />
+          <ScalarProperty Name="coor_name" ColumnName="coor_name" />
+          <ScalarProperty Name="coor_email" ColumnName="coor_email" />
+          <ScalarProperty Name="coor_phone" ColumnName="coor_phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Marketing_Manager">
+      <EntityTypeMapping TypeName="MagazineModel.Marketing_Manager">
+        <MappingFragment StoreEntitySet="Marketing_Manager">
+          <ScalarProperty Name="manager_id" ColumnName="manager_id" />
+          <ScalarProperty Name="manager_password" ColumnName="manager_password" />
+          <ScalarProperty Name="manager_name" ColumnName="manager_name" />
+          <ScalarProperty Name="manager_email" ColumnName="manager_email" />
+          <ScalarProperty Name="manager_phone" ColumnName="manager_phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="MagazineModel.Review">
+        <MappingFragment StoreEntitySet="Review">
+          <ScalarProperty Name="review_id" ColumnName="review_id" />
+          <ScalarProperty Name="article_id" ColumnName="article_id" />
+          <ScalarProperty Name="display_code" ColumnName="display_code" />
+          <ScalarProperty Name="review_content" ColumnName="review_content" />
+          <ScalarProperty Name="review_name" ColumnName="review_name" />
+          <ScalarProperty Name="review_date" ColumnName="review_date" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="MagazineModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="faculty_id" ColumnName="faculty_id" />
+          <ScalarProperty Name="student_password" ColumnName="student_password" />
+          <ScalarProperty Name="student_name" ColumnName="student_name" />
+          <ScalarProperty Name="student_email" ColumnName="student_email" />
+          <ScalarProperty Name="student_phone" ColumnName="student_phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoordinatorHomePages">
+      <EntityTypeMapping TypeName="MagazineModel.CoordinatorHomePage">
+        <MappingFragment StoreEntitySet="CoordinatorHomePage">
+          <ScalarProperty Name="coordinator_id" ColumnName="coordinator_id" />
+          <ScalarProperty Name="faculty_id" ColumnName="faculty_id" />
+          <ScalarProperty Name="coor_name" ColumnName="coor_name" />
+          <ScalarProperty Name="coor_email" ColumnName="coor_email" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="student_password" ColumnName="student_password" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="student_name" ColumnName="student_name" />
+          <ScalarProperty Name="student_email" ColumnName="student_email" />
+          <ScalarProperty Name="student_phone" ColumnName="student_phone" />
+          <ScalarProperty Name="file_id" ColumnName="file_id" />
+          <ScalarProperty Name="article_id" ColumnName="article_id" />
+          <ScalarProperty Name="file_url" ColumnName="file_url" />
+          <ScalarProperty Name="time_post" ColumnName="time_post" />
+          <ScalarProperty Name="file_status" ColumnName="file_status" />
+          <ScalarProperty Name="time_public" ColumnName="time_public" />
+          <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+          <ScalarProperty Name="faculty_name" ColumnName="faculty_name" />
+          <ScalarProperty Name="Expr3" ColumnName="Expr3" />
+          <ScalarProperty Name="Expr4" ColumnName="Expr4" />
+          <ScalarProperty Name="period_id" ColumnName="period_id" />
+          <ScalarProperty Name="article_tittle" ColumnName="article_tittle" />
+          <ScalarProperty Name="arrticle_content" ColumnName="arrticle_content" />
+          <ScalarProperty Name="article_public_date" ColumnName="article_public_date" />
+          <ScalarProperty Name="article_post_date" ColumnName="article_post_date" />
+          <ScalarProperty Name="article_avatar_img" ColumnName="article_avatar_img" />
+          <ScalarProperty Name="article_status" ColumnName="article_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ManagerPages">
+      <EntityTypeMapping TypeName="MagazineModel.ManagerPage">
+        <MappingFragment StoreEntitySet="ManagerPage">
+          <ScalarProperty Name="file_id" ColumnName="file_id" />
+          <ScalarProperty Name="article_id" ColumnName="article_id" />
+          <ScalarProperty Name="file_url" ColumnName="file_url" />
+          <ScalarProperty Name="time_post" ColumnName="time_post" />
+          <ScalarProperty Name="time_public" ColumnName="time_public" />
+          <ScalarProperty Name="file_status" ColumnName="file_status" />
+          <ScalarProperty Name="faculty_id" ColumnName="faculty_id" />
+          <ScalarProperty Name="faculty_name" ColumnName="faculty_name" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="period_id" ColumnName="period_id" />
+          <ScalarProperty Name="article_tittle" ColumnName="article_tittle" />
+          <ScalarProperty Name="arrticle_content" ColumnName="arrticle_content" />
+          <ScalarProperty Name="article_post_date" ColumnName="article_post_date" />
+          <ScalarProperty Name="article_public_date" ColumnName="article_public_date" />
+          <ScalarProperty Name="article_avatar_img" ColumnName="article_avatar_img" />
+          <ScalarProperty Name="article_status" ColumnName="article_status" />
+          <ScalarProperty Name="coordinator_id" ColumnName="coordinator_id" />
+          <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+          <ScalarProperty Name="coor_name" ColumnName="coor_name" />
+          <ScalarProperty Name="coor_email" ColumnName="coor_email" />
+          <ScalarProperty Name="Expr3" ColumnName="Expr3" />
+          <ScalarProperty Name="Expr4" ColumnName="Expr4" />
+          <ScalarProperty Name="student_password" ColumnName="student_password" />
+          <ScalarProperty Name="student_name" ColumnName="student_name" />
+          <ScalarProperty Name="student_email" ColumnName="student_email" />
+          <ScalarProperty Name="student_phone" ColumnName="student_phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentPostFiles">
+      <EntityTypeMapping TypeName="MagazineModel.StudentPostFile">
+        <MappingFragment StoreEntitySet="StudentPostFile">
+          <ScalarProperty Name="file_id" ColumnName="file_id" />
+          <ScalarProperty Name="article_id" ColumnName="article_id" />
+          <ScalarProperty Name="file_url" ColumnName="file_url" />
+          <ScalarProperty Name="time_post" ColumnName="time_post" />
+          <ScalarProperty Name="file_status" ColumnName="file_status" />
+          <ScalarProperty Name="time_public" ColumnName="time_public" />
+          <ScalarProperty Name="student_id" ColumnName="student_id" />
+          <ScalarProperty Name="period_id" ColumnName="period_id" />
+          <ScalarProperty Name="article_tittle" ColumnName="article_tittle" />
+          <ScalarProperty Name="arrticle_content" ColumnName="arrticle_content" />
+          <ScalarProperty Name="faculty_name" ColumnName="faculty_name" />
+          <ScalarProperty Name="article_avatar_img" ColumnName="article_avatar_img" />
+          <ScalarProperty Name="article_status" ColumnName="article_status" />
+          <ScalarProperty Name="article_post_date" ColumnName="article_post_date" />
+          <ScalarProperty Name="article_public_date" ColumnName="article_public_date" />
+          <ScalarProperty Name="student_name" ColumnName="student_name" />
+          <ScalarProperty Name="student_email" ColumnName="student_email" />
+          <ScalarProperty Name="closure_post_date" ColumnName="closure_post_date" />
+          <ScalarProperty Name="period_name" ColumnName="period_name" />
+          <ScalarProperty Name="display_code" ColumnName="display_code" />
+          <ScalarProperty Name="review_content" ColumnName="review_content" />
+          <ScalarProperty Name="review_name" ColumnName="review_name" />
+          <ScalarProperty Name="review_date" ColumnName="review_date" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+          <ScalarProperty Name="Expr3" ColumnName="Expr3" />
+          <ScalarProperty Name="review_id" ColumnName="review_id" />
+          <ScalarProperty Name="academic_id" ColumnName="academic_id" />
+          <ScalarProperty Name="Expr4" ColumnName="Expr4" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

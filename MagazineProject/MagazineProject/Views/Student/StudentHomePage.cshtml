@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "StudentHomePage";
+    Layout = "~/Views/Shared/_NavBar.cshtml";
+}
+
+<h2>StudentHomePage</h2>
+@if (TempData["Disable"] != null)
+{
+    <button disabled class="btn btn-danger">Upload </button>
+}
+else
+{
+    @Html.ActionLink("upload", "PostArticle", null, new { @class = "btn btn-primary" })
+}
+
+@Html.ActionLink("View All Article", "ViewAllArticle", null, new { @class = "btn btn-primary" })
+
+

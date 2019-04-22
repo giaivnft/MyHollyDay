@@ -1,0 +1,166 @@
+﻿@model IEnumerable<MagazineProject.StudentPostFile>
+
+@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/_NavBar.cshtml";
+}
+
+<h2>Test</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.article_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.file_url)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.time_post)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.file_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.time_public)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.student_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.period_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.article_tittle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.arrticle_content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.faculty_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.article_avatar_img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.article_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.article_post_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.article_public_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.student_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.student_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.closure_post_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.period_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.display_code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.review_content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.review_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.review_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rating)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.article_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.file_url)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.time_post)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.file_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.time_public)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.student_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.period_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.article_tittle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.arrticle_content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.faculty_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.article_avatar_img)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.article_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.article_post_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.article_public_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.student_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.student_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.closure_post_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.period_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.display_code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.review_content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.review_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.review_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rating)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.file_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.file_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.file_id })
+        </td>
+    </tr>
+}
+
+</table>

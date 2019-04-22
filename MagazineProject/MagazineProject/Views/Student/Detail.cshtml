@@ -1,0 +1,182 @@
+﻿@model IEnumerable<MagazineProject.CoordinatorHomePage>
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_NavBar.cshtml";
+}
+
+<h2>Detail</h2>
+<div class="container">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.faculty_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.coor_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.coor_email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.student_password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expr1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.student_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.student_email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.student_phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.article_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.file_url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.time_post)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.file_status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.time_public)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.faculty_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Expr4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.period_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.article_tittle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.arrticle_content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.article_public_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.article_post_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.article_avatar_img)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.article_status)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.faculty_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.coor_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.coor_email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.student_password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Expr1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.student_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.student_email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.student_phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.article_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.file_url)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.time_post)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.file_status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.time_public)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.faculty_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Expr4)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.period_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.article_tittle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.arrticle_content)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.article_public_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.article_post_date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.article_avatar_img)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.article_status)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    @if (Session["coordinator"] == null)
+    {
+        <a href="@Url.Action("Login","Login")">Only Ministry can comment</a>
+    }
+    else
+    {
+        using (Html.BeginForm("PostReview", "Student", FormMethod.Post))
+        {
+            <h5>Rating</h5>
+            <div id="rateYo"></div>
+            <input type="hidden" name="rating" id="rating" />
+            <h5>Content</h5>
+            @Html.TextArea("Review", null, 3, 6, new { @class = "form-control" })
+            <input type="hidden" name="studentID" value="@ViewBag.studentID" />
+            <input type="hidden" name="adID" value="@Session["admin"].ToString()" />
+            <input type="submit" name="name" value="Send" />
+        }
+    }
+</div>
+

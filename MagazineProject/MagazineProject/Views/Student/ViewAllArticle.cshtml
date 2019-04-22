@@ -1,0 +1,76 @@
+﻿@model IEnumerable<MagazineProject.Article>
+
+@{
+    ViewBag.Title = "ViewAllArticle";
+    Layout = "~/Views/Shared/_NavBar.cshtml";
+}
+
+<h2>ViewAllArticle</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.article_tittle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.arrticle_content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.article_post_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.article_public_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.article_avatar_img)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.article_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Magazine_period.academic_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.faculty_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.article_tittle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.arrticle_content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.article_post_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.article_public_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.article_avatar_img)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.article_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Magazine_period.academic_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.faculty_id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.article_id }) |
+            @Html.ActionLink("View Detail", "Detail", new { id=item.article_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.article_id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,92 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "PostArticle";
+    Layout = "~/Views/Shared/_NavBar.cshtml";
+}
+
+<div class="container">
+    <div>
+        <h2 class="heading">Post your Article</h2>
+        <hr width ="50%" class="text-center" />
+    </div>
+    @using (Html.BeginForm("PostArticle", "Student", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+        <div class="form-group">
+            <label for="title">Article Title</label>
+            <input type="text" class="form-control" id="title" name="title" aria-describedby="title" placeholder="Input your title">
+            <small id="title" class="form-text text-muted">You can write the topic of the article briefly</small>
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Content (not required)</span>
+            </div>
+            <textarea class="form-control" name ="content" aria-label="Content(not required)" style="width:1420px;height:200px" ></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="title">Article File Upload:</label>
+            <input name="file" id="file" type="file" />
+            <small id="file" class="form-text text-muted">Only accept "doc", "docx", "pdf", "zip" file.</small>
+        </div>
+
+        <div class="form-group">
+            <label for="image">Article Image Title:</label>            
+                <input name="image" id="image" type="file" accept="image/png ,image/jpeg" />            
+            <small name="image" class="form-text text-muted">Only accept jpeg or png type.</small>
+        </div>
+
+        <div>
+
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action active">
+                    Terms and Condiditions
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    1. The article should be original writing that enhances the existing body of knowledge
+                    in the given subject area. Original review articles and surveys are acceptable, even if new data/concepts are not presented.
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    2. Results reported have not been submitted or published elsewhere
+                    (although expanded versions of conference publications are eligible for submission).
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    3. Experiments, statistics, and other analyses are
+                    performed to a high technical standard and are described in sufficient detail.
+                </a>
+                <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Please read correctly and comfirm.</a>
+            </div>
+
+        </div>@Html.CheckBox("Condition", false, new { @id = "chkcondition" })<a href="#">Term and condition</a>
+        <br />
+        <br />
+        <input type="submit" value="submit" onclick="javascript:return AcceptTermAndcondition();" />
+
+    }
+
+</div>
+
+
+
+
+
+
+<script language="javascript" type="text/javascript">
+    function AcceptTermAndcondition() {
+
+        if ($("#chkcondition").is(':checked')) {
+            return true;
+        }
+        else {
+            alert("Please accept term and condition");
+            return false;
+        }
+    }
+</script>

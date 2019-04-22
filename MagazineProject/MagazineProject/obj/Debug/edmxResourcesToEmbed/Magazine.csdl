@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MagazineModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Academy_info">
+    <Key>
+      <PropertyRef Name="academic_id" />
+    </Key>
+    <Property Name="academic_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="academic_year_from" Type="DateTime" Precision="3" />
+    <Property Name="academic_year_to" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Magazine_period" Relationship="Self.Maga_Aca" FromRole="Academy_info" ToRole="Magazine_period" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="admin_id" />
+    </Key>
+    <Property Name="admin_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="admin_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="admin_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="admin_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="admin_phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="article_id" />
+    </Key>
+    <Property Name="article_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="student_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="period_id" Type="Int32" />
+    <Property Name="article_tittle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="arrticle_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="article_post_date" Type="DateTime" Precision="3" />
+    <Property Name="article_public_date" Type="DateTime" Precision="3" />
+    <Property Name="article_avatar_img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="article_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Magazine_period" Relationship="Self.A_Maga" FromRole="Article" ToRole="Magazine_period" />
+    <NavigationProperty Name="Student" Relationship="Self.A_S" FromRole="Article" ToRole="Student" />
+    <NavigationProperty Name="File_post" Relationship="Self.F_A" FromRole="Article" ToRole="File_post" />
+    <NavigationProperty Name="Reviews" Relationship="Self.R_A" FromRole="Article" ToRole="Review" />
+  </EntityType>
+  <EntityType Name="Faculty">
+    <Key>
+      <PropertyRef Name="faculty_id" />
+    </Key>
+    <Property Name="faculty_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="faculty_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Marketing_coordinator" Relationship="Self.Mar_F" FromRole="Faculty" ToRole="Marketing_coordinator" />
+    <NavigationProperty Name="Students" Relationship="Self.S_F" FromRole="Faculty" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="File_post">
+    <Key>
+      <PropertyRef Name="file_id" />
+    </Key>
+    <Property Name="file_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="article_id" Type="Int32" />
+    <Property Name="file_url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="time_post" Type="DateTime" Precision="3" />
+    <Property Name="file_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="time_public" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Article" Relationship="Self.F_A" FromRole="File_post" ToRole="Article" />
+  </EntityType>
+  <EntityType Name="Magazine_period">
+    <Key>
+      <PropertyRef Name="period_id" />
+    </Key>
+    <Property Name="period_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="academic_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="period_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="closure_post_date" Type="DateTime" Precision="3" />
+    <Property Name="manager_set_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Academy_info" Relationship="Self.Maga_Aca" FromRole="Magazine_period" ToRole="Academy_info" />
+    <NavigationProperty Name="Articles" Relationship="Self.A_Maga" FromRole="Magazine_period" ToRole="Article" />
+  </EntityType>
+  <EntityType Name="Marketing_coordinator">
+    <Key>
+      <PropertyRef Name="coordinator_id" />
+    </Key>
+    <Property Name="coordinator_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="faculty_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="coor_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="coor_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="coor_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="coor_phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Faculty" Relationship="Self.Mar_F" FromRole="Marketing_coordinator" ToRole="Faculty" />
+  </EntityType>
+  <EntityType Name="Marketing_Manager">
+    <Key>
+      <PropertyRef Name="manager_id" />
+    </Key>
+    <Property Name="manager_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="manager_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="manager_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="manager_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="manager_phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="review_id" />
+    </Key>
+    <Property Name="review_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="article_id" Type="Int32" />
+    <Property Name="display_code" Type="Int32" />
+    <Property Name="review_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="review_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="review_date" Type="DateTime" Precision="3" />
+    <Property Name="rating" Type="Double" />
+    <NavigationProperty Name="Article" Relationship="Self.R_A" FromRole="Review" ToRole="Article" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="student_id" />
+    </Key>
+    <Property Name="student_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="faculty_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="student_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="student_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="student_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="student_phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Articles" Relationship="Self.A_S" FromRole="Student" ToRole="Article" />
+    <NavigationProperty Name="Faculty" Relationship="Self.S_F" FromRole="Student" ToRole="Faculty" />
+  </EntityType>
+  <EntityType Name="CoordinatorHomePage">
+    <Key>
+      <PropertyRef Name="coordinator_id" />
+      <PropertyRef Name="student_id" />
+      <PropertyRef Name="file_id" />
+      <PropertyRef Name="Expr2" />
+      <PropertyRef Name="Expr3" />
+    </Key>
+    <Property Name="coordinator_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="faculty_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="coor_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="coor_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="student_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="student_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Expr1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="student_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="student_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="student_phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="file_id" Type="Int32" Nullable="false" />
+    <Property Name="article_id" Type="Int32" />
+    <Property Name="file_url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="time_post" Type="DateTime" Precision="3" />
+    <Property Name="file_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="time_public" Type="DateTime" Precision="3" />
+    <Property Name="Expr2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="faculty_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Expr3" Type="Int32" Nullable="false" />
+    <Property Name="Expr4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="period_id" Type="Int32" />
+    <Property Name="article_tittle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="arrticle_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="article_public_date" Type="DateTime" Precision="3" />
+    <Property Name="article_post_date" Type="DateTime" Precision="3" />
+    <Property Name="article_avatar_img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="article_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ManagerPage">
+    <Key>
+      <PropertyRef Name="file_id" />
+      <PropertyRef Name="faculty_id" />
+      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="coordinator_id" />
+      <PropertyRef Name="Expr3" />
+    </Key>
+    <Property Name="file_id" Type="Int32" Nullable="false" />
+    <Property Name="article_id" Type="Int32" />
+    <Property Name="file_url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="time_post" Type="DateTime" Precision="3" />
+    <Property Name="time_public" Type="DateTime" Precision="3" />
+    <Property Name="file_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="faculty_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="faculty_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Expr1" Type="Int32" Nullable="false" />
+    <Property Name="student_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="period_id" Type="Int32" />
+    <Property Name="article_tittle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="arrticle_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="article_post_date" Type="DateTime" Precision="3" />
+    <Property Name="article_public_date" Type="DateTime" Precision="3" />
+    <Property Name="article_avatar_img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="article_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="coordinator_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Expr2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="coor_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="coor_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Expr3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Expr4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="student_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="student_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="student_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="student_phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="StudentPostFile">
+    <Key>
+      <PropertyRef Name="file_id" />
+      <PropertyRef Name="Expr1" />
+      <PropertyRef Name="Expr2" />
+      <PropertyRef Name="Expr3" />
+      <PropertyRef Name="review_id" />
+    </Key>
+    <Property Name="file_id" Type="Int32" Nullable="false" />
+    <Property Name="article_id" Type="Int32" />
+    <Property Name="file_url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="time_post" Type="DateTime" Precision="3" />
+    <Property Name="file_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="time_public" Type="DateTime" Precision="3" />
+    <Property Name="student_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="period_id" Type="Int32" />
+    <Property Name="article_tittle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="arrticle_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="faculty_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="article_avatar_img" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="article_status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="article_post_date" Type="DateTime" Precision="3" />
+    <Property Name="article_public_date" Type="DateTime" Precision="3" />
+    <Property Name="student_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="student_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="closure_post_date" Type="DateTime" Precision="3" />
+    <Property Name="period_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="display_code" Type="Int32" />
+    <Property Name="review_content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="review_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="review_date" Type="DateTime" Precision="3" />
+    <Property Name="rating" Type="Double" />
+    <Property Name="Expr1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Expr2" Type="Int32" Nullable="false" />
+    <Property Name="Expr3" Type="Int32" Nullable="false" />
+    <Property Name="review_id" Type="Int32" Nullable="false" />
+    <Property Name="academic_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Expr4" Type="Int32" />
+  </EntityType>
+  <Association Name="Maga_Aca">
+    <End Role="Academy_info" Type="Self.Academy_info" Multiplicity="0..1" />
+    <End Role="Magazine_period" Type="Self.Magazine_period" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Academy_info">
+        <PropertyRef Name="academic_id" />
+      </Principal>
+      <Dependent Role="Magazine_period">
+        <PropertyRef Name="academic_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="A_Maga">
+    <End Role="Magazine_period" Type="Self.Magazine_period" Multiplicity="0..1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magazine_period">
+        <PropertyRef Name="period_id" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="period_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="A_S">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="Article" Type="Self.Article" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="student_id" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="F_A">
+    <End Role="Article" Type="Self.Article" Multiplicity="0..1" />
+    <End Role="File_post" Type="Self.File_post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="article_id" />
+      </Principal>
+      <Dependent Role="File_post">
+        <PropertyRef Name="article_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="R_A">
+    <End Role="Article" Type="Self.Article" Multiplicity="0..1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="article_id" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="article_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Mar_F">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+    <End Role="Marketing_coordinator" Type="Self.Marketing_coordinator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="faculty_id" />
+      </Principal>
+      <Dependent Role="Marketing_coordinator">
+        <PropertyRef Name="faculty_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="S_F">
+    <End Role="Faculty" Type="Self.Faculty" Multiplicity="0..1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Faculty">
+        <PropertyRef Name="faculty_id" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="faculty_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MagazineEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Academy_info" EntityType="Self.Academy_info" />
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Articles" EntityType="Self.Article" />
+    <EntitySet Name="Faculties" EntityType="Self.Faculty" />
+    <EntitySet Name="File_post" EntityType="Self.File_post" />
+    <EntitySet Name="Magazine_period" EntityType="Self.Magazine_period" />
+    <EntitySet Name="Marketing_coordinator" EntityType="Self.Marketing_coordinator" />
+    <EntitySet Name="Marketing_Manager" EntityType="Self.Marketing_Manager" />
+    <EntitySet Name="Reviews" EntityType="Self.Review" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="CoordinatorHomePages" EntityType="Self.CoordinatorHomePage" />
+    <EntitySet Name="ManagerPages" EntityType="Self.ManagerPage" />
+    <EntitySet Name="StudentPostFiles" EntityType="Self.StudentPostFile" />
+    <AssociationSet Name="Maga_Aca" Association="Self.Maga_Aca">
+      <End Role="Academy_info" EntitySet="Academy_info" />
+      <End Role="Magazine_period" EntitySet="Magazine_period" />
+    </AssociationSet>
+    <AssociationSet Name="A_Maga" Association="Self.A_Maga">
+      <End Role="Magazine_period" EntitySet="Magazine_period" />
+      <End Role="Article" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="A_S" Association="Self.A_S">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="Article" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="F_A" Association="Self.F_A">
+      <End Role="Article" EntitySet="Articles" />
+      <End Role="File_post" EntitySet="File_post" />
+    </AssociationSet>
+    <AssociationSet Name="R_A" Association="Self.R_A">
+      <End Role="Article" EntitySet="Articles" />
+      <End Role="Review" EntitySet="Reviews" />
+    </AssociationSet>
+    <AssociationSet Name="Mar_F" Association="Self.Mar_F">
+      <End Role="Faculty" EntitySet="Faculties" />
+      <End Role="Marketing_coordinator" EntitySet="Marketing_coordinator" />
+    </AssociationSet>
+    <AssociationSet Name="S_F" Association="Self.S_F">
+      <End Role="Faculty" EntitySet="Faculties" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
